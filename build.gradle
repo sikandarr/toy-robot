@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'application'
+apply plugin: 'eclipse'
 mainClassName = 'com.reagroup.toyrobot.ToyRobotApplication'
 
 repositories {
@@ -12,6 +13,7 @@ targetCompatibility = 1.8
 
 dependencies {
     testCompile "junit:junit:4.12"
+    compile('org.projectlombok:lombok:1.16.20')
 }
 
 jar {
