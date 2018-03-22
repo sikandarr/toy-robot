@@ -1,0 +1,20 @@
+apply plugin: 'java'
+apply plugin: 'application'
+mainClassName = 'com.reagroup.toyrobot.ToyRobotApplication'
+
+repositories {
+    mavenCentral()
+}
+group = 'com.rea-group'
+version = '0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    testCompile "junit:junit:4.12"
+}
+
+jar {
+    baseName = 'rea-toy-robot'
+    version =  '0.1-SNAPSHOT'
+}
