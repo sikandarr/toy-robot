@@ -1,14 +1,19 @@
 package com.reagroup.toyrobot.commands;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.reagroup.toyrobot.Position;
+import com.reagroup.toyrobot.SurfaceObject;
+import com.reagroup.toyrobot.actions.PlaceAction;
 
-@Data
-@EqualsAndHashCode(callSuper=false)
-public class PlaceCommand extends AbstractCommand
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public class PlaceCommand extends Command
 {
+	private Position location;
+	
 	@Override
-	public void runCommand()
+	public void execute(SurfaceObject object)
 	{
+		object.performAction(new PlaceAction(this.location));
 	}
 }

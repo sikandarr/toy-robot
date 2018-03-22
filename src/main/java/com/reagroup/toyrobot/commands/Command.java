@@ -4,8 +4,7 @@ import com.reagroup.toyrobot.SurfaceObject;
 import lombok.Data;
 
 @Data
-public abstract class AbstractCommand
+public abstract class Command
 {
-	SurfaceObject object;
-	public abstract void runCommand(); 
+	public abstract void execute(SurfaceObject object); 
 }
