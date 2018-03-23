@@ -9,7 +9,7 @@ public class InputHandler
 {
 	Command handleInput(String command)
 	{
-		if (command.startsWith("Place"))
+		if (command.startsWith("PLACE"))
 			return parsePlaceCommand(command);
 
 		if (command.equals("REPORT"))
