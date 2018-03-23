@@ -5,8 +5,10 @@ import com.reagroup.toyrobot.SurfaceObject;
 import com.reagroup.toyrobot.actions.PlaceAction;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 
 @AllArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class PlaceCommand extends Command
 {
 	private Position location;

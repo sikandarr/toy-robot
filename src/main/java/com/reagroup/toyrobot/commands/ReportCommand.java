@@ -5,8 +5,12 @@ import java.io.PrintStream;
 import com.reagroup.toyrobot.SurfaceObject;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @AllArgsConstructor
+@Data
+@EqualsAndHashCode(callSuper=false)
 public class ReportCommand extends Command
 {
 	PrintStream out;
