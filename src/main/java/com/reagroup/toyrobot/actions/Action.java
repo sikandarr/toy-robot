@@ -3,29 +3,40 @@ package com.reagroup.toyrobot.actions;
 import java.util.List;
 
 import com.reagroup.toyrobot.SurfaceObject;
-import com.reagroup.toyrobot.VerifyActionService;
+import com.reagroup.toyrobot.ValidationService;
 
-import lombok.Data;
-
-@Data
 public abstract class Action
 {
-	List<VerifyActionService> verifications;
+	List<ValidationService> beforeAction;
+	List<ValidationService> afterAction;
 
-	public boolean verify()
+	public boolean verifyBeforeAction()
 	{
 		boolean proceed = true;
-		for (VerifyActionService verification : verifications)
-		{
-			if (proceed)
-				proceed = verification.verify();
-		}
+		if (beforeAction != null)
+			for (ValidationService service : beforeAction)
+			{
+				if (proceed)
+					proceed = service.verify();
+			}
+		return proceed;
+	}
+
+	public boolean verifyAfterAction()
+	{
+		boolean proceed = true;
+		if (afterAction != null)
+			for (ValidationService service : afterAction)
+			{
+				if (proceed)
+					proceed = service.verify();
+			}
 		return proceed;
 	}
 
 	public void perform(SurfaceObject object)
 	{
-		if (verify())
+		if (verifyBeforeAction())
 			performAction(object);
 	}
 

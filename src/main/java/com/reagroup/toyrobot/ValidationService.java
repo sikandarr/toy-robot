@@ -1,6 +1,6 @@
 package com.reagroup.toyrobot;
 
-public interface VerifyActionService
+public interface ValidationService
 {
 	default public boolean verify()
 	{

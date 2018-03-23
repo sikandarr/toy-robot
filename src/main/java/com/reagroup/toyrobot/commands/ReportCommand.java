@@ -11,7 +11,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class ReportCommand extends Command
+public class ReportCommand implements Command
 {
 	PrintStream out;
 	

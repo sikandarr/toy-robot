@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
-public class UnknownCommand extends Command
+public class UnknownCommand implements Command
 {
 	public void execute(SurfaceObject object)
 	{
