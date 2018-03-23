@@ -7,7 +7,7 @@ import com.reagroup.toyrobot.commands.ReportCommand;
 
 public class InputHandler
 {
-	Command handleInput(String command)
+	public Command handleInput(String command)
 	{
 		if (command.startsWith("PLACE"))
 			return parsePlaceCommand(command);
@@ -18,7 +18,7 @@ public class InputHandler
 		return new UnknownCommand();
 	}
 
-	Command parsePlaceCommand(String command)
+	private Command parsePlaceCommand(String command)
 	{
 		String[] args = command.split(" ");
 		int x = Integer.parseInt(args[1]);
