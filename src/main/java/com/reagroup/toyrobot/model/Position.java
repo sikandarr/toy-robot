@@ -1,4 +1,4 @@
-package com.reagroup.toyrobot;
+package com.reagroup.toyrobot.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,7 +1,5 @@
 package com.reagroup.toyrobot.model;
 
-import com.reagroup.toyrobot.Position;
-
 /**
  * The Surface interface represents a plane on which 
  * the objects of our universe exist; there's not much known

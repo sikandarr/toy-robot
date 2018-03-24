@@ -8,8 +8,7 @@ package com.reagroup.toyrobot.model;
  */
 import java.util.List;
 
-import com.reagroup.toyrobot.Position;
-import com.reagroup.toyrobot.actions.Action;
+import com.reagroup.toyrobot.simulation.actions.Action;
 
 import lombok.Data;
 

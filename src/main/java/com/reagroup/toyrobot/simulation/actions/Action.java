@@ -1,9 +1,9 @@
-package com.reagroup.toyrobot.actions;
+package com.reagroup.toyrobot.simulation.actions;
 
 import java.util.List;
 
-import com.reagroup.toyrobot.SurfaceObject;
-import com.reagroup.toyrobot.ValidationService;
+import com.reagroup.toyrobot.model.SurfaceObject;
+import com.reagroup.toyrobot.simulation.ValidationService;
 
 public abstract class Action
 {

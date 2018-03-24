@@ -1,4 +1,4 @@
-package com.reagroup.toyrobot;
+package com.reagroup.toyrobot.simulation;
 
 public interface ValidationService
 {
