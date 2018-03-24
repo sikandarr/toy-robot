@@ -1,7 +1,7 @@
-package com.reagroup.toyrobot.actions;
+package com.reagroup.toyrobot.simulation.actions;
 
-import com.reagroup.toyrobot.Position;
-import com.reagroup.toyrobot.SurfaceObject;
+import com.reagroup.toyrobot.model.Position;
+import com.reagroup.toyrobot.model.SurfaceObject;
 
 import lombok.AllArgsConstructor;
 
