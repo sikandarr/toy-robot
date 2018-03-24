@@ -2,36 +2,28 @@ package com.reagroup.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.reagroup.toyrobot.InputHandler;
-import com.reagroup.toyrobot.Position;
-import com.reagroup.toyrobot.commands.*;
-import com.reagroup.toyrobot.Direction;
+import com.reagroup.toyrobot.controller.InputHandler;
+import com.reagroup.toyrobot.controller.commands.*;
+import com.reagroup.toyrobot.model.Direction;
+import com.reagroup.toyrobot.model.Position;
 
-public class InputHandlerTest
+public class TestInputHandler
 {
-	private static InputHandler inputHandler;
-	
-	@BeforeClass
-	public static void setUp()
-	{
-		inputHandler = new InputHandler();
-	}
 	
 	@Test
 	public void testPlaceCommandInput()
 	{
-		Command placeCommand = inputHandler.handleInput("PLACE 0 1 NORTH");
+		Command placeCommand = InputHandler.handleInput("PLACE 0 1 NORTH");
 		assertEquals(new PlaceCommand(new Position(0, 1, Direction.NORTH)), placeCommand);
 	}
 	
 	@Test
 	public void testReportCommandInput()
 	{
-		Command reportCommand = inputHandler.handleInput("REPORT");
-		assertEquals(new ReportCommand(System.out), reportCommand);
+		Command reportCommand = InputHandler.handleInput("REPORT");
+		assertEquals(new ReportCommand(), reportCommand);
 	}
 	
 	@Test
@@ -39,19 +31,19 @@ public class InputHandlerTest
 	{
 		Command expected = new UnknownCommand();
 		
-		Command unknownCommand = inputHandler.handleInput(" ");
+		Command unknownCommand = InputHandler.handleInput(" ");
 		assertEquals(expected, unknownCommand);
 		
-		unknownCommand =  inputHandler.handleInput("PLACE");
+		unknownCommand =  InputHandler.handleInput("PLACE");
 		assertEquals(expected, unknownCommand);
 		
-		unknownCommand = inputHandler.handleInput("PLACE 2 3 NORTH SOUTH");
+		unknownCommand = InputHandler.handleInput("PLACE 2 3 NORTH SOUTH");
 		assertEquals(expected, unknownCommand);
 		
-		unknownCommand = inputHandler.handleInput("PLACE 2 3 SOUTHWEST");
+		unknownCommand = InputHandler.handleInput("PLACE 2 3 SOUTHWEST");
 		assertEquals(expected, unknownCommand);
 		
-		unknownCommand = inputHandler.handleInput("PLACE A 3 NORTH");
+		unknownCommand = InputHandler.handleInput("PLACE A 3 NORTH");
 		assertEquals(expected, unknownCommand);
 	}
 }
