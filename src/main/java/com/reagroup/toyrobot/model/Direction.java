@@ -14,7 +14,11 @@ public enum Direction
 
 	private Direction fromValue(int value)
 	{
-		value = value % 4;
+		// the modulus operator produces negative numbers
+		// and hence we're using Math.floorMod
+		// see stackoverflow (4412179) for discussion
+		
+		value = Math.floorMod(value, 4);
 		if (value == 3)
 			return WEST;
 		else if (value == 2)
