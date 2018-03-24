@@ -2,12 +2,13 @@ package com.reagroup.tests;
 
 import org.junit.Test;
 
-import com.reagroup.toyrobot.CheckPositionIsValid;
-import com.reagroup.toyrobot.Direction;
-import com.reagroup.toyrobot.Position;
-import com.reagroup.toyrobot.SquareTable;
-import com.reagroup.toyrobot.Surface;
-import com.reagroup.toyrobot.ValidationService;
+import com.reagroup.toyrobot.model.Direction;
+import com.reagroup.toyrobot.model.Position;
+import com.reagroup.toyrobot.model.Surface;
+import com.reagroup.toyrobot.simulation.CheckPositionIsValid;
+import com.reagroup.toyrobot.simulation.SquareTable;
+import com.reagroup.toyrobot.simulation.ValidationService;
+
 import static org.junit.Assert.assertEquals;
 
 import org.junit.BeforeClass;
