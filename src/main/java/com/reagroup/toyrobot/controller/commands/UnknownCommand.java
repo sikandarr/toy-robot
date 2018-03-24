@@ -1,15 +1,21 @@
-package com.reagroup.toyrobot.commands;
-
-import com.reagroup.toyrobot.SurfaceObject;
+package com.reagroup.toyrobot.controller.commands;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+
+/**
+ * Any input that can-not be interpreted into a specific
+ * Command, including inputs that are incorrectly formatted
+ * end up being an UnknownCommand.
+ */
 
 @Data
 @EqualsAndHashCode(callSuper=false)
 public class UnknownCommand implements Command
 {
-	public void execute(SurfaceObject object)
+	//nothing to execute
+	public void execute()
 	{
 		return;
 	}
