@@ -1,11 +1,12 @@
 package com.reagroup.toyrobot.simulation.actions;
 
 import java.util.List;
+import java.util.Observable;
 
 import com.reagroup.toyrobot.model.SurfaceObject;
 import com.reagroup.toyrobot.simulation.ValidationService;
 
-public abstract class Action
+public abstract class Action extends Observable
 {
 	List<ValidationService> beforeAction;
 	List<ValidationService> afterAction;

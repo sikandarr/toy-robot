@@ -8,8 +8,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CheckPositionIsValid implements ValidationService
 {
-	Position position;
-	Surface surface;
+	private final Position position;
+	private final Surface surface;
 
 	@Override
 	public boolean verify()
