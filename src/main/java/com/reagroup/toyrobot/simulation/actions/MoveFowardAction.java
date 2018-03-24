@@ -23,8 +23,9 @@ public class MoveFowardAction extends Action
 		else x--;
 
 		Position temp = new Position(x, y, current.getFacing());
+		notifyObservers(temp);
 
-		if (verifyAfterAction())
+		if (proceed)
 			object.setLocation(temp);
 	}
 

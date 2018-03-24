@@ -1,7 +1,6 @@
 package com.reagroup.toyrobot.simulation;
 
 import com.reagroup.toyrobot.model.SurfaceObject;
-
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -14,5 +13,4 @@ public class CheckObjectIsPlaced implements ValidationService
 	{
 		return object.getLocation() != null;
 	}
-
 }
