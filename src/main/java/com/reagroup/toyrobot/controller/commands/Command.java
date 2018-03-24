@@ -26,5 +26,5 @@ package com.reagroup.toyrobot.controller.commands;
  */
 public interface Command
 {
-	public abstract void execute(); 
+	public void execute(); 
 }
