@@ -11,8 +11,8 @@ import com.reagroup.toyrobot.Position;
  * tell us whether a given position is within its boundary.
  * 
  * Note: implementations that are one dimensional should necessarily
- * render all positions that have the other dimension greater than zero
- * beyond its boundary.
+ * render all positions that have the other dimension greater or less 
+ * than zero beyond its boundary.
  *
  */
 public interface Surface
