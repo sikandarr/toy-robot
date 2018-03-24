@@ -1,7 +1,14 @@
-package com.reagroup.toyrobot;
+package com.reagroup.toyrobot.model;
 
+
+/**
+ * The abstract type SurfaceObject represents an Object
+ * on the Surface of our Game universe. It has a Position
+ * at which it exists and a list of actions that it can perform.
+ */
 import java.util.List;
 
+import com.reagroup.toyrobot.Position;
 import com.reagroup.toyrobot.actions.Action;
 
 import lombok.Data;
