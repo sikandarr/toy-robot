@@ -1,10 +1,10 @@
-package com.reagroup.toyrobot.actions;
+package com.reagroup.toyrobot.simulation.actions;
 
-import com.reagroup.toyrobot.Direction;
-import com.reagroup.toyrobot.Position;
-import com.reagroup.toyrobot.SurfaceObject;
+import com.reagroup.toyrobot.model.Direction;
+import com.reagroup.toyrobot.model.Position;
+import com.reagroup.toyrobot.model.SurfaceObject;
 
-public class MoveAction extends Action
+public class MoveFowardAction extends Action
 {
 	@Override
 	public void performAction(SurfaceObject object)
