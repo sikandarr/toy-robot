@@ -1,23 +1,21 @@
 package com.reagroup.toyrobot.controller.commands;
 
 import com.reagroup.toyrobot.model.SurfaceObject;
-import com.reagroup.toyrobot.simulation.actions.MoveFowardAction;
-
+import com.reagroup.toyrobot.simulation.actions.Action;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
 public class MoveCommand implements Command
 {
 	private SurfaceObject object;
+	private Action action;
 	
 	@Override
 	public void execute()
 	{
-		object.performAction(new MoveFowardAction());
+		object.performAction(action);
 	}
 
 }

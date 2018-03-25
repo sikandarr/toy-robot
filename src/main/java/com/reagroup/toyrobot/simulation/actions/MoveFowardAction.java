@@ -9,24 +9,31 @@ public class MoveFowardAction extends Action
 	@Override
 	public void performAction(SurfaceObject object)
 	{
-		Position current = object.getPosition();
-
-		int x = current.getX();
-		int y = current.getY();
-
-		if (current.getFacing() == Direction.NORTH)
-			y++;
-		else if (current.getFacing() == Direction.SOUTH)
-			y--;
-		else if (current.getFacing() == Direction.EAST)
-			x++;
-		else x--;
-
-		Position temp = new Position(x, y, current.getFacing());
-		notifyObservers(temp);
-
+		setChanged();
+		notifyObservers();
 		if (proceed)
-			object.setPosition(temp);
+		{
+			Position current = object.getPosition();
+
+			int x = current.getX();
+			int y = current.getY();
+
+			if (current.getFacing() == Direction.NORTH)
+				y++;
+			else if (current.getFacing() == Direction.SOUTH)
+				y--;
+			else if (current.getFacing() == Direction.EAST)
+				x++;
+			else x--;
+
+			Position temp = new Position(x, y, current.getFacing());
+			
+			setChanged();
+			notifyObservers(temp);
+
+			if (proceed)
+				object.setPosition(temp);
+		}
 	}
 
 }

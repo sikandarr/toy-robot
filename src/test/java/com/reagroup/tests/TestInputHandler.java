@@ -2,48 +2,59 @@ package com.reagroup.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.reagroup.toyrobot.controller.InputHandler;
+import com.reagroup.toyrobot.controller.FrontController;
 import com.reagroup.toyrobot.controller.commands.*;
 import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
+import com.reagroup.toyrobot.simulation.SquareTable;
+import com.reagroup.toyrobot.simulation.actions.PlaceAction;
 
 public class TestInputHandler
 {
-	
+	private static FrontController controller;
+
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception
+	{
+		controller = new FrontController(null, System.out, null, new SquareTable(5));
+	}
+
 	@Test
 	public void testPlaceCommandInput()
 	{
-		Command placeCommand = InputHandler.handleInput("PLACE 0 1 NORTH");
-		assertEquals(new PlaceCommand(new Position(0, 1, Direction.NORTH)), placeCommand);
+		Command placeCommand = controller.commandInterpreter("PLACE 0 1 NORTH");
+		Position position = new Position(0, 1, Direction.NORTH);
+		assertEquals(new PlaceCommand(null, new PlaceAction(position)), placeCommand);
 	}
-	
+
 	@Test
 	public void testReportCommandInput()
 	{
-		Command reportCommand = InputHandler.handleInput("REPORT");
-		assertEquals(new ReportCommand(), reportCommand);
+		Command reportCommand = controller.commandInterpreter("REPORT");
+		assertEquals(new ReportCommand(System.out, null), reportCommand);
 	}
-	
+
 	@Test
 	public void testUnknownCommandInput()
 	{
 		Command expected = new UnknownCommand();
-		
-		Command unknownCommand = InputHandler.handleInput(" ");
+
+		Command unknownCommand = controller.commandInterpreter(" ");
 		assertEquals(expected, unknownCommand);
-		
-		unknownCommand =  InputHandler.handleInput("PLACE");
+
+		unknownCommand = controller.commandInterpreter("PLACE");
 		assertEquals(expected, unknownCommand);
-		
-		unknownCommand = InputHandler.handleInput("PLACE 2 3 NORTH SOUTH");
+
+		unknownCommand = controller.commandInterpreter("PLACE 2 3 NORTH SOUTH");
 		assertEquals(expected, unknownCommand);
-		
-		unknownCommand = InputHandler.handleInput("PLACE 2 3 SOUTHWEST");
+
+		unknownCommand = controller.commandInterpreter("PLACE 2 3 SOUTHWEST");
 		assertEquals(expected, unknownCommand);
-		
-		unknownCommand = InputHandler.handleInput("PLACE A 3 NORTH");
+
+		unknownCommand = controller.commandInterpreter("PLACE A 3 NORTH");
 		assertEquals(expected, unknownCommand);
 	}
 }

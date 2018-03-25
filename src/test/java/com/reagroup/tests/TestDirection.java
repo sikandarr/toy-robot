@@ -21,25 +21,25 @@ public class TestDirection
 	public void testAllRotations()
 	{
 		facing = facing.turnLeft();
-		assertEquals(Direction.EAST, facing);
+		assertEquals(Direction.WEST, facing);
 		
 		facing = facing.turnLeft();
 		assertEquals(Direction.SOUTH, facing);
 		
 		facing = facing.turnLeft();
-		assertEquals(Direction.WEST, facing);
+		assertEquals(Direction.EAST, facing);
 		
 		facing = facing.turnLeft();
 		assertEquals(Direction.NORTH, facing);
 		
 		facing = facing.turnRight();
-		assertEquals(Direction.WEST, facing);
+		assertEquals(Direction.EAST, facing);
 		
 		facing = facing.turnRight();
 		assertEquals(Direction.SOUTH, facing);
 		
 		facing = facing.turnRight();
-		assertEquals(Direction.EAST, facing);
+		assertEquals(Direction.WEST, facing);
 		
 		facing = facing.turnRight();
 		assertEquals(Direction.NORTH, facing);

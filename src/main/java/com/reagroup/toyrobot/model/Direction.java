@@ -28,12 +28,12 @@ public enum Direction
 		else return NORTH;
 	}
 
-	public Direction turnLeft()
+	public Direction turnRight()
 	{
 		return fromValue(this.ordinal() + 1);
 	}
 
-	public Direction turnRight()
+	public Direction turnLeft()
 	{
 		return fromValue(this.ordinal() - 1);
 	}

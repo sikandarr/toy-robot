@@ -9,6 +9,7 @@ public class RotateRightAction extends Action
 	public void performAction(SurfaceObject object)
 	{
 		Position position = object.getPosition();
+		setChanged();
 		notifyObservers(position);
 		if (proceed)
 		{

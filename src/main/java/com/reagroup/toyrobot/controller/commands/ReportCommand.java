@@ -3,25 +3,29 @@ package com.reagroup.toyrobot.controller.commands;
 import java.io.PrintStream;
 
 import com.reagroup.toyrobot.model.SurfaceObject;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
 @AllArgsConstructor
-@Data
 @EqualsAndHashCode(callSuper=false)
-@NoArgsConstructor
 public class ReportCommand implements Command
 {
+	@NonNull
 	PrintStream out;
 	private SurfaceObject object;
 	
 	@Override
 	public void execute()
 	{
-		out.println(object.getPosition().toString());
+		try
+		{
+			out.println(object.getPosition().toString());
+		}
+		catch(NullPointerException ex)
+		{
+			
+		}
 	}
 	
 }

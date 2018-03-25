@@ -1,26 +1,22 @@
 package com.reagroup.toyrobot.controller.commands;
 
-import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.SurfaceObject;
-import com.reagroup.toyrobot.simulation.actions.PlaceAction;
-
+import com.reagroup.toyrobot.simulation.actions.Action;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-@RequiredArgsConstructor
+@Getter
 public class PlaceCommand implements Command
 {
-	@NonNull
-	private Position location;
-	private SurfaceObject object;
+	private final SurfaceObject object;
+	private final Action action;
 
 	@Override
 	public void execute()
 	{
-		object.performAction(new PlaceAction(this.location));
+		object.performAction(action);
 	}
 }
