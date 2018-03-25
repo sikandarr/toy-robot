@@ -9,7 +9,7 @@ public class MoveFowardAction extends Action
 	@Override
 	public void performAction(SurfaceObject object)
 	{
-		Position current = object.getLocation();
+		Position current = object.getPosition();
 
 		int x = current.getX();
 		int y = current.getY();
@@ -26,7 +26,7 @@ public class MoveFowardAction extends Action
 		notifyObservers(temp);
 
 		if (proceed)
-			object.setLocation(temp);
+			object.setPosition(temp);
 	}
 
 }

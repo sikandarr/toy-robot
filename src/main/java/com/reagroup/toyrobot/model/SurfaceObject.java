@@ -15,19 +15,19 @@ import lombok.Data;
 @Data
 public abstract class SurfaceObject
 {
-	protected Position location;
+	protected Position position;
 	protected List<Action> actions;
 
 	public void performAction(Action action)
 	{
 		for (Action performable : actions)
 			if (action.getClass().equals(performable))
-				action.perform(this);
+				action.performAction(this);
 	}
 	
 	@Override
 	public String toString()
 	{
-		return location.toString();
+		return position.toString();
 	}
 }

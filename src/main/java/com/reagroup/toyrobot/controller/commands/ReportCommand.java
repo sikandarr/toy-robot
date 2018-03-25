@@ -21,7 +21,7 @@ public class ReportCommand implements Command
 	@Override
 	public void execute()
 	{
-		out.println(object.getLocation().toString());
+		out.println(object.getPosition().toString());
 	}
 	
 }

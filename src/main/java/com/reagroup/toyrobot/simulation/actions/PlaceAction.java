@@ -8,13 +8,15 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PlaceAction extends Action
 {
-	//new position
+	// new position
 	private Position position;
-	
+
 	@Override
 	public void performAction(SurfaceObject object)
 	{
-		object.setLocation(position);
+		notifyObservers(position);
+		if (proceed)
+			object.setPosition(position);
 	}
 
 }

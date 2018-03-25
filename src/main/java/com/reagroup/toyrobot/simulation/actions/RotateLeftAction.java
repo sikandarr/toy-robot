@@ -8,8 +8,12 @@ public class RotateLeftAction extends Action
 	@Override
 	public void performAction(SurfaceObject object)
 	{
-		Position position = object.getLocation();
-		position.setFacing(position.getFacing().turnLeft());
-		object.setLocation(position);
+		Position position = object.getPosition();
+		notifyObservers(position);
+		if (proceed)
+		{
+			position.setFacing(position.getFacing().turnLeft());
+			object.setPosition(position);
+		}
 	}
 }

@@ -1,4 +1,4 @@
-package com.reagroup.toyrobot.simulation;
+package com.reagroup.toyrobot.simulation.validation;
 
 import java.util.Observable;
 import java.util.Observer;

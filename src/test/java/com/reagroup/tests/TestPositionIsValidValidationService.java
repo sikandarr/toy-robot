@@ -5,9 +5,9 @@ import org.junit.Test;
 import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.Surface;
-import com.reagroup.toyrobot.simulation.CheckPositionIsValid;
 import com.reagroup.toyrobot.simulation.SquareTable;
-import com.reagroup.toyrobot.simulation.ValidationService;
+import com.reagroup.toyrobot.simulation.validation.CheckPositionIsValid;
+import com.reagroup.toyrobot.simulation.validation.ValidationService;
 
 import static org.junit.Assert.assertEquals;
 

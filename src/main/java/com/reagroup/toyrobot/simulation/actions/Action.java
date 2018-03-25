@@ -10,6 +10,5 @@ import lombok.Setter;
 public abstract class Action extends Observable
 {
 	protected boolean proceed = true;
-
 	public abstract void performAction(SurfaceObject object);
 }
