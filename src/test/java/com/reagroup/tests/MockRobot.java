@@ -9,7 +9,7 @@ public class MockRobot
 {
 	public static ToyRobot construct()
 	{
-		ToyRobot toyRobot = new ToyRobot(new ArrayList<Action>());
+		ToyRobot toyRobot = new ToyRobot("Mock Toy Robot", new ArrayList<Action>());
 		toyRobot.addAction(new PlaceAction(null));
 		toyRobot.addAction(new MoveFowardAction());
 		toyRobot.addAction(new RotateLeftAction());

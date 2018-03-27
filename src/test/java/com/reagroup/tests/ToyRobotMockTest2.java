@@ -2,12 +2,10 @@ package com.reagroup.tests;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.Scanner;
-
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.reagroup.toyrobot.controller.FrontController;
+import com.reagroup.toyrobot.controller.CommandInterpreter;
 import com.reagroup.toyrobot.controller.commands.Command;
 import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
@@ -19,22 +17,21 @@ public class ToyRobotMockTest2
 {
 	private static Surface tableSquare;
 	private static SurfaceObject toyRobot;
-	private static FrontController controller;
+	private static CommandInterpreter controller;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
 		tableSquare = new SquareTable(5);
 		toyRobot = MockRobot.construct();
-		Scanner scan = new Scanner(System.in);
-		controller = new FrontController(scan, System.out, toyRobot, tableSquare);
+		controller = new CommandInterpreter(toyRobot, tableSquare);
 	}
 	
 	@Test
 	public void testMultipleCommands()
 	{
 
-		Command cmd = controller.commandInterpreter(Cmd.PLACE + " 1 2 EAST");
+		Command cmd = controller.commandInterpreter(Cmd.PLACE + " 1,2,EAST");
 		cmd.execute();
 
 		cmd = controller.commandInterpreter(Cmd.MOVE);

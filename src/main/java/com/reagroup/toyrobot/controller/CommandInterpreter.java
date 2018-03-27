@@ -1,33 +1,21 @@
 package com.reagroup.toyrobot.controller;
 
-import java.io.PrintStream;
-import java.util.Scanner;
 import com.reagroup.toyrobot.controller.commands.*;
-import com.reagroup.toyrobot.model.Direction;
-import com.reagroup.toyrobot.model.Position;
-import com.reagroup.toyrobot.model.Surface;
-import com.reagroup.toyrobot.model.SurfaceObject;
-import com.reagroup.toyrobot.simulation.actions.Action;
-import com.reagroup.toyrobot.simulation.actions.MoveFowardAction;
-import com.reagroup.toyrobot.simulation.actions.PlaceAction;
-import com.reagroup.toyrobot.simulation.actions.RotateLeftAction;
-import com.reagroup.toyrobot.simulation.actions.RotateRightAction;
-import com.reagroup.toyrobot.simulation.validation.CheckObjectIsPlaced;
-import com.reagroup.toyrobot.simulation.validation.CheckPositionIsValid;
-
+import com.reagroup.toyrobot.model.*;
+import com.reagroup.toyrobot.simulation.actions.*;
+import com.reagroup.toyrobot.simulation.validation.*;
 import lombok.AllArgsConstructor;
 
 /**
- * This class is responsible to translate user inputs and
- * return the respective commands.
+ * The command factory that is responsible to translate user inputs
+ * and return new commands that may then be executed by a simulation
+ * engine.
  *
  */
 
 @AllArgsConstructor
-public class FrontController
+public class CommandInterpreter
 {
-	private final Scanner scan;
-	private final PrintStream out;
 	private final SurfaceObject surfaceObject;
 	private final Surface surface;
 
@@ -48,14 +36,14 @@ public class FrontController
 
 		if (commandString.equals("REPORT"))
 		{
-			return new ReportCommand(out, surfaceObject);
+			return new ReportCommand(surfaceObject);
 		}
 
 		if (commandString.equals("LEFT"))
 		{
 			Action action = new RotateLeftAction();
 			action.addObserver(new CheckObjectIsPlaced(surfaceObject));
-			LeftCommand cmd = new LeftCommand(surfaceObject, action);
+			Command cmd = new ActionCommand(surfaceObject, action);
 			return cmd;
 		}
 
@@ -63,7 +51,7 @@ public class FrontController
 		{
 			Action action = new RotateRightAction();
 			action.addObserver(new CheckObjectIsPlaced(surfaceObject));
-			Command cmd = new RightCommand(surfaceObject, action);
+			Command cmd = new ActionCommand(surfaceObject, action);
 			return cmd;
 		}
 
@@ -72,28 +60,41 @@ public class FrontController
 			Action action = new MoveFowardAction();
 			action.addObserver(new CheckPositionIsValid(surface));
 			action.addObserver(new CheckObjectIsPlaced(surfaceObject));
-			Command cmd = new MoveCommand(surfaceObject, action);
+			Command cmd = new ActionCommand(surfaceObject, action);
 			return cmd;
 		}
 
 		return new UnknownCommand();
 	}
 
+	/**
+	 * Parses the specified command string into an instance of
+	 * ActionCommand that has PlaceAction as its action
+	 * strategy.
+	 * 
+	 * @param command string to be parsed;
+	 *            must follow the strict conventions of the PLACE command
+	 *            as specified in the specs.
+	 * 
+	 * @return executable ActionCommand if parsing is successful
+	 *         or UnknownCommand.
+	 */
+
 	private Command parsePlaceCommand(String command)
 	{
-		String[] args = command.split(" ");
-
-		if (args.length > 4)
-			return new UnknownCommand();
-
 		int x, y;
 		Direction facing = null;
 
 		try
 		{
-			x = Integer.parseInt(args[1]);
-			y = Integer.parseInt(args[2]);
-			facing = Direction.valueOf(args[3]);
+			String[] args = command.split("[ ]")[1].split(",");
+
+			if (args.length > 3)
+				return new UnknownCommand();
+
+			x = Integer.parseInt(args[0]);
+			y = Integer.parseInt(args[1]);
+			facing = Direction.valueOf(args[2]);
 		}
 		catch (ArrayIndexOutOfBoundsException | IllegalArgumentException ex)
 		{
@@ -103,11 +104,6 @@ public class FrontController
 		Position position = new Position(x, y, facing);
 		Action action = new PlaceAction(position);
 		action.addObserver(new CheckPositionIsValid(surface));
-		return new PlaceCommand(surfaceObject, action);
-	}
-
-	public Command readInput()
-	{
-		return commandInterpreter(scan.nextLine());
+		return new ActionCommand(surfaceObject, action);
 	}
 }

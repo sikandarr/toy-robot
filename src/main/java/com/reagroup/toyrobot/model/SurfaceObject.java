@@ -18,6 +18,9 @@ import lombok.RequiredArgsConstructor;
 public abstract class SurfaceObject
 {
 	protected Position position;
+	
+	@NonNull
+	protected String name;
 	@NonNull
 	protected List<Action> actions;
 

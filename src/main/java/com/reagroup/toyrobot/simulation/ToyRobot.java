@@ -8,9 +8,9 @@ import com.reagroup.toyrobot.simulation.actions.Action;
 
 public class ToyRobot extends SurfaceObject
 {
-	public ToyRobot(List<Action> actions)
+	public ToyRobot(String name, List<Action> actions)
 	{
-		super(actions);
+		super(name, actions);
 	}
 	
 }

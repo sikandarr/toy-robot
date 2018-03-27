@@ -5,36 +5,39 @@ import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.reagroup.toyrobot.controller.FrontController;
+import com.reagroup.toyrobot.controller.CommandInterpreter;
 import com.reagroup.toyrobot.controller.commands.*;
 import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
+import com.reagroup.toyrobot.model.SurfaceObject;
 import com.reagroup.toyrobot.simulation.SquareTable;
 import com.reagroup.toyrobot.simulation.actions.PlaceAction;
 
-public class TestInputHandler
+public class TestCommandInterpreter
 {
-	private static FrontController controller;
+	private static CommandInterpreter controller;
+	private static SurfaceObject surfaceObject;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
-		controller = new FrontController(null, System.out, null, new SquareTable(5));
+		surfaceObject = MockRobot.construct();
+		controller = new CommandInterpreter(surfaceObject, new SquareTable(5));
 	}
 
 	@Test
 	public void testPlaceCommandInput()
 	{
-		Command placeCommand = controller.commandInterpreter("PLACE 0 1 NORTH");
+		Command placeCommand = controller.commandInterpreter("PLACE 0,1,NORTH");
 		Position position = new Position(0, 1, Direction.NORTH);
-		assertEquals(new PlaceCommand(null, new PlaceAction(position)), placeCommand);
+		assertEquals(new ActionCommand(surfaceObject, new PlaceAction(position)), placeCommand);
 	}
 
 	@Test
 	public void testReportCommandInput()
 	{
 		Command reportCommand = controller.commandInterpreter("REPORT");
-		assertEquals(new ReportCommand(System.out, null), reportCommand);
+		assertEquals(new ReportCommand(surfaceObject), reportCommand);
 	}
 
 	@Test

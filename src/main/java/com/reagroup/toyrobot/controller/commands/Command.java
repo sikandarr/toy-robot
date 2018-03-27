@@ -17,11 +17,11 @@ package com.reagroup.toyrobot.controller.commands;
  * or take the REPORT command that doesn't result in any change of state.
  * <p>
  * With this interface the ability to introduce new commands that do not alter state 
- * is made possible. It is also the responsibility of the implementing classes to 
- * generate corresponding Actions in case the Command does require to alter the 
- * state of an object.
+ * is made possible.
  * <p>
- * This interface combined with its implementations use the command design pattern.
+ * This interface combined with its implementations use the command design pattern;
+ * furthermore, the concrete implementation of specific commands use the Strategy pattern
+ * to decide what action(s) to execute for a specific command. 
  *
  */
 public interface Command
