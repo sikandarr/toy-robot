@@ -1,19 +1,30 @@
 package com.reagroup.toyrobot.view;
 
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import com.reagroup.toyrobot.controller.Controller;
 
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
-public class CommandLineUI
+@RequiredArgsConstructor
+public class CommandLineInterface implements View
 {
 	@Setter
-	Controller controller;
+	private Controller controller;
+	
+	@NonNull
+	private PrintWriter out;
+	
+	@NonNull
+	private Scanner scan;
 
-	public void update(String response)
+	@Override
+	public void update(Object response)
 	{
-		System.out.println(response);
+		out.println(response);
 	}
 
 	public void run()
