@@ -24,10 +24,10 @@ public final class ToyRobotApp
 	{
 		Surface table = new SquareTable(5);
 		toyRobot = new ToyRobot.RobotBuilder()
-				.addAction(new PlaceAction(null))
-				.addAction(new MoveFowardAction())
-				.addAction(new RotateLeftAction())
-				.addAction(new RotateRightAction())
+				.action(new PlaceAction(null))
+				.action(new MoveFowardAction())
+				.action(new RotateLeftAction())
+				.action(new RotateRightAction())
 				.create();
 
 		cli = CommandLine.builder()

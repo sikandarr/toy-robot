@@ -46,7 +46,7 @@ public class ToyRobot extends SurfaceObject
 			return this;
 		}
 
-		public RobotBuilder addAction(Action action)
+		public RobotBuilder action(Action action)
 		{
 			if (actions.indexOf(action) == -1)
 				actions.add(action);

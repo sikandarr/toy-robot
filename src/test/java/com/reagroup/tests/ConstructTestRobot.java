@@ -7,10 +7,10 @@ public class ConstructTestRobot
 	public static ToyRobot construct(String name)
 	{
 		return new ToyRobot.RobotBuilder().name(name)
-				.addAction(new PlaceAction(null))
-				.addAction(new MoveFowardAction())
-				.addAction(new RotateLeftAction())
-				.addAction(new RotateRightAction())
+				.action(new PlaceAction(null))
+				.action(new MoveFowardAction())
+				.action(new RotateLeftAction())
+				.action(new RotateRightAction())
 				.create();
 	}
 }
