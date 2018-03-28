@@ -17,14 +17,12 @@ public final class ToyRobotApp
 	public static void main(String args[])
 	{
 		ToyRobotApp app = new ToyRobotApp();
-		app.init();
 		app.run();
 	}
 
-	public void init()
+	private ToyRobotApp()
 	{
 		Surface table = new SquareTable(5);
-
 		toyRobot = new ToyRobot.RobotBuilder()
 				.addAction(new PlaceAction(null))
 				.addAction(new MoveFowardAction())
@@ -32,24 +30,22 @@ public final class ToyRobotApp
 				.addAction(new RotateRightAction())
 				.create();
 
+		cli = CommandLine.builder()
+				.out(System.out)
+				.scan(new Scanner(System.in))
+				.build();
+
 		controller = Controller
 				.builder()
 				.commandLine(cli)
 				.surface(table)
 				.surfaceObject(toyRobot)
 				.build();
-
-		try (Scanner scanner = new Scanner(System.in))
-		{
-			cli = CommandLine.builder()
-					.controller(controller)
-					.out(System.out)
-					.scan(scanner)
-					.build();
-		}
+		
+		cli.setController(controller);
 
 	}
-	
+
 	public void run()
 	{
 		cli.run();
