@@ -15,13 +15,13 @@ import lombok.RequiredArgsConstructor;
  * 
  * Note: the execute() method must be called for the object
  * of this class to be ready to return a meaningful response
- * via the getResponse method();
+ * via the getResponse();
  *
  */
 
 @RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class ReportCommand implements Command
+public class ReportCommand implements Command, ResponseCommand
 {
 	private static Logger log = Logger.getLogger(ReportCommand.class.getName());
 	private String response;

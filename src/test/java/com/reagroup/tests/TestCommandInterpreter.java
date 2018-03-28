@@ -17,11 +17,12 @@ public class TestCommandInterpreter
 {
 	private static CommandInterpreter controller;
 	private static SurfaceObject surfaceObject;
+	private static String robotName = "Test Robot";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
-		surfaceObject = MockRobot.construct();
+		surfaceObject = ConstructTestRobot.construct(robotName);
 		controller = new CommandInterpreter(surfaceObject, new SquareTable(5));
 	}
 

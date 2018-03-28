@@ -1,19 +1,21 @@
 package com.reagroup.toyrobot.controller;
 
 import com.reagroup.toyrobot.controller.commands.Command;
-import com.reagroup.toyrobot.controller.commands.ReportCommand;
+import com.reagroup.toyrobot.controller.commands.ResponseCommand;
 import com.reagroup.toyrobot.model.Surface;
 import com.reagroup.toyrobot.model.SurfaceObject;
-import com.reagroup.toyrobot.view.CommandLineUI;
+import com.reagroup.toyrobot.view.View;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 
 @AllArgsConstructor
+@Builder
 public class Controller
 {
 	private final SurfaceObject surfaceObject;
 	private final Surface surface;
-	private final CommandLineUI commandLineUI;
+	private final View commandLineUI;
 	
 	public void handleInput(String input)
 	{
@@ -21,10 +23,10 @@ public class Controller
 		Command command = commandInterpreter.commandInterpreter(input);
 		command.execute();
 		
-		if (command instanceof ReportCommand)
+		if (command instanceof ResponseCommand)
 		{
-			ReportCommand responseCommand = (ReportCommand) command;
-			commandLineUI.update(responseCommand.getResponse());
+			ResponseCommand responseCommand = (ResponseCommand) command;
+			commandLineUI.update((String) responseCommand.getResponse());
 		}
 	}
 }

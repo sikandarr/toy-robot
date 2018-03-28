@@ -14,12 +14,13 @@ public class ToyRobotMockTest
 	private static Surface tableSquare;
 	private static SurfaceObject toyRobot;
 	private static CommandInterpreter controller;
+	private static String robotName = "Test Robot";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
 		tableSquare = new SquareTable(5);
-		toyRobot = MockRobot.construct();
+		toyRobot = ConstructTestRobot.construct(robotName);
 		controller = new CommandInterpreter(toyRobot, tableSquare);
 	}
 
@@ -29,7 +30,7 @@ public class ToyRobotMockTest
 		Command cmd = controller.commandInterpreter(Cmd.REPORT);
 		cmd.execute();
 		assertEquals(null, toyRobot.getPosition());
-		assertEquals("Mock Toy Robot Not Placed", ((ReportCommand) cmd).getResponse());
+		assertEquals(robotName + " Not Placed", ((ReportCommand) cmd).getResponse());
 
 		cmd = controller.commandInterpreter(Cmd.PLACE + " 0,0,NORTH");
 		cmd.execute();

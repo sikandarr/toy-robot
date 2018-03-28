@@ -18,12 +18,13 @@ public class ToyRobotMockTest2
 	private static Surface tableSquare;
 	private static SurfaceObject toyRobot;
 	private static CommandInterpreter controller;
+	private static String robotName = "Test Robot";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception
 	{
 		tableSquare = new SquareTable(5);
-		toyRobot = MockRobot.construct();
+		toyRobot = ConstructTestRobot.construct(robotName);
 		controller = new CommandInterpreter(toyRobot, tableSquare);
 	}
 	
