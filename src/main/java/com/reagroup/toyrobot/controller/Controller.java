@@ -15,7 +15,7 @@ public class Controller
 {
 	private final SurfaceObject surfaceObject;
 	private final Surface surface;
-	private final View commandLineUI;
+	private final View commandLine;
 	
 	public void handleInput(String input)
 	{
@@ -26,7 +26,7 @@ public class Controller
 		if (command instanceof ResponseCommand)
 		{
 			ResponseCommand responseCommand = (ResponseCommand) command;
-			commandLineUI.update((String) responseCommand.getResponse());
+			commandLine.update((String) responseCommand.getResponse());
 		}
 	}
 }

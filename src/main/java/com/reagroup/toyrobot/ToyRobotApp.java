@@ -34,7 +34,7 @@ public final class ToyRobotApp
 
 		controller = Controller
 				.builder()
-				.commandLineUI(cli)
+				.commandLine(cli)
 				.surface(table)
 				.surfaceObject(toyRobot)
 				.build();
