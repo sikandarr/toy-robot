@@ -3,6 +3,7 @@ package com.reagroup.toyrobot.controller.commands;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
+import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.SurfaceObject;
 import lombok.EqualsAndHashCode;
 import lombok.NonNull;
@@ -27,19 +28,13 @@ public class ReportCommand implements ResponseCommand
 	private String response;
 
 	@NonNull
-	private final SurfaceObject object;
+	private final SurfaceObject surfaceObject;
 
 	@Override
 	public void execute()
 	{
-		try
-		{
-			response = object.getPosition().toString();
-		}
-		catch (NullPointerException ex)
-		{
-			response = object.getName() + " Not Placed";
-		}
+		Position position = surfaceObject.getPosition();
+		response = position == null ? surfaceObject.getName() + " Not Placed" : position + "";
 	}
 
 	public String getResponse()

@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'eclipse'
-mainClassName = 'com.reagroup.toyrobot.ToyRobotApplication'
+mainClassName = 'com.reagroup.toyrobot.ToyRobotApp'
 
 repositories {
     mavenCentral()
@@ -19,6 +19,11 @@ dependencies {
 }
 
 jar {
+	manifest {
+    attributes(
+      'Main-Class': 'com.reagroup.toyrobot.ToyRobotApp'
+    )
+  }
     baseName = 'rea-toy-robot'
     version =  '0.1-SNAPSHOT'
 }

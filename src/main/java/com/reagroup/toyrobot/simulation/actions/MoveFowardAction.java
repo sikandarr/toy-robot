@@ -4,6 +4,12 @@ import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.SurfaceObject;
 
+
+/**
+ * Provides the logic to increment an SurfaceObject's
+ * x or y position in the direction it is facing.
+ *
+ */
 public class MoveFowardAction extends Action
 {
 	@Override

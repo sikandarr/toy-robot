@@ -8,6 +8,12 @@ import com.reagroup.toyrobot.view.View;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+/**
+ * Controller class of the MVC architecture.
+ * Handles input and notifies the View to
+ * update if required.
+ *
+ */
 
 @AllArgsConstructor
 @Builder

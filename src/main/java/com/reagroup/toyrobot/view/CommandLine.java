@@ -6,6 +6,12 @@ import com.reagroup.toyrobot.controller.Controller;
 import lombok.Builder;
 import lombok.Setter;
 
+/**
+ * This class is a command line implementation
+ * of the View interface.
+ *
+ */
+
 @Builder
 public class CommandLine implements View
 {
@@ -22,13 +28,21 @@ public class CommandLine implements View
 
 	public void run()
 	{
-		System.out.println("Command:");
-		String command = "";
-		for (; !command.equals("QUIT");)
+		out.println(welcomeMessage);
+		for (;;)
 		{
-			command = scan.nextLine();
-			controller.handleInput(command);
+			if (scan.hasNextLine())
+			{
+				String command = scan.nextLine();
+				controller.handleInput(command);
+			}
 		}
 	}
+
+	@Builder.Default
+	private String welcomeMessage = "" +
+			"Hi! Please insert coins to begin; nah, just kidding. :) \n"
+			+ "Just enter your command (commands are case-sensitive and don't forget PLACE prior to any other command).\n"
+			+ "Enter QUIT to quit.";
 
 }

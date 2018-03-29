@@ -15,5 +15,5 @@ package com.reagroup.toyrobot.model;
  */
 public interface Surface
 {
-	public boolean isPositionWithinBounds(Position location);
+	public boolean isPositionWithinBoundary(Position location);
 }

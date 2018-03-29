@@ -11,8 +11,11 @@ public class SquareTable implements Surface
 	private int length;
 
 	@Override
-	public boolean isPositionWithinBounds(Position position)
+	public boolean isPositionWithinBoundary(Position position)
 	{
-		return !(position.getX() > length || position.getY() > length || position.getX() < 0 || position.getY() < 0);
+		return !(position.getX() > length
+				|| position.getY() > length
+				|| position.getX() < 0
+				|| position.getY() < 0);
 	}
 }

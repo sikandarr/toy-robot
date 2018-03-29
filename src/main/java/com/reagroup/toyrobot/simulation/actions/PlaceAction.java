@@ -6,6 +6,12 @@ import com.reagroup.toyrobot.model.SurfaceObject;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 
+/**
+ * A Place action places a surface object on
+ * the surface at a given position.
+ *
+ */
+
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 public class PlaceAction extends Action

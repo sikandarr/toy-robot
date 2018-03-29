@@ -11,7 +11,9 @@ public class ToyRobot extends SurfaceObject
 {
 	private ToyRobot(Position position, String name, List<Action> actions)
 	{
-		super(position, name, actions);
+		this.position = position;
+		this.name = name;
+		this.actions = actions;
 	}
 
 	@Override
@@ -24,9 +26,9 @@ public class ToyRobot extends SurfaceObject
 
 	public static class RobotBuilder
 	{
-		protected Position position;
-		protected String name;
-		protected List<Action> actions;
+		private Position position;
+		private String name;
+		private List<Action> actions;
 
 		public RobotBuilder()
 		{
@@ -53,7 +55,7 @@ public class ToyRobot extends SurfaceObject
 			return this;
 		}
 
-		public ToyRobot create()
+		public ToyRobot build()
 		{
 			return new ToyRobot(position, name, actions);
 		}

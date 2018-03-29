@@ -3,6 +3,10 @@ package com.reagroup.toyrobot.simulation.actions;
 import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.SurfaceObject;
 
+/**
+ * Rotate a surface object towards its right.
+ *
+ */
 public class RotateRightAction extends Action
 {
 	@Override

@@ -11,6 +11,6 @@ public class ConstructTestRobot
 				.action(new MoveFowardAction())
 				.action(new RotateLeftAction())
 				.action(new RotateRightAction())
-				.create();
+				.build();
 	}
 }

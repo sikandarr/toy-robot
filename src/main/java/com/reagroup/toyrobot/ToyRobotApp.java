@@ -8,6 +8,13 @@ import com.reagroup.toyrobot.simulation.*;
 import com.reagroup.toyrobot.simulation.actions.*;
 import com.reagroup.toyrobot.view.CommandLine;
 
+/**
+ * The main class for the toy-robot application.
+ * The application is designed using the MVC architecture
+ * design pattern and hence this class builds the required models,
+ * controller, and view and runs the application.
+ *
+ */
 public final class ToyRobotApp
 {
 	private SurfaceObject toyRobot;
@@ -28,7 +35,7 @@ public final class ToyRobotApp
 				.action(new MoveFowardAction())
 				.action(new RotateLeftAction())
 				.action(new RotateRightAction())
-				.create();
+				.build();
 
 		cli = CommandLine.builder()
 				.out(System.out)

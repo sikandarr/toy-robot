@@ -1,5 +1,7 @@
 package com.reagroup.toyrobot.controller;
 
+import java.util.logging.Logger;
+
 import com.reagroup.toyrobot.controller.commands.*;
 import com.reagroup.toyrobot.model.*;
 import com.reagroup.toyrobot.simulation.actions.*;
@@ -18,6 +20,7 @@ public class CommandInterpreter
 {
 	private final SurfaceObject surfaceObject;
 	private final Surface surface;
+	private static Logger log = Logger.getLogger(CommandInterpreter.class.getName());
 
 	/**
 	 * Returns a Command object that can then be executed
@@ -64,6 +67,7 @@ public class CommandInterpreter
 			return cmd;
 		}
 
+		log.warning("Failed to interpret the command: " + commandString);
 		return new UnknownCommand();
 	}
 
@@ -72,7 +76,7 @@ public class CommandInterpreter
 	 * ActionCommand that has PlaceAction as its action
 	 * strategy.
 	 * 
-	 * @param command string to be parsed;
+	 * @param commandString string to be parsed;
 	 *            must follow the strict conventions of the PLACE command
 	 *            as specified in the specs.
 	 * 
@@ -80,14 +84,14 @@ public class CommandInterpreter
 	 *         or UnknownCommand.
 	 */
 
-	private Command parsePlaceCommand(String command)
+	private Command parsePlaceCommand(String commandString)
 	{
 		int x, y;
 		Direction facing = null;
 
 		try
 		{
-			String[] args = command.split("[ ]")[1].split(",");
+			String[] args = commandString.split("[ ]")[1].split(",");
 
 			if (args.length > 3)
 				return new UnknownCommand();
@@ -98,6 +102,7 @@ public class CommandInterpreter
 		}
 		catch (ArrayIndexOutOfBoundsException | IllegalArgumentException ex)
 		{
+			log.warning("Failed to interpret the command: " + commandString);
 			return new UnknownCommand();
 		}
 
