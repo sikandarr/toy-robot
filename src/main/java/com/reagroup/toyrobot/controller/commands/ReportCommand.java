@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 @EqualsAndHashCode(callSuper = false)
-public class ReportCommand implements Command, ResponseCommand
+public class ReportCommand implements ResponseCommand
 {
 	private static Logger log = Logger.getLogger(ReportCommand.class.getName());
 	private String response;
