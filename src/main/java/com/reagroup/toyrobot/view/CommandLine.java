@@ -36,13 +36,16 @@ public class CommandLine implements View
 				String command = scan.nextLine();
 				controller.handleInput(command);
 			}
+			else
+				break;
 		}
+		scan.close();
 	}
 
 	@Builder.Default
+	@Setter
 	private String welcomeMessage = "" +
-			"Hi! Please insert coins to begin; nah, just kidding. :) \n"
-			+ "Just enter your command (commands are case-sensitive and don't forget PLACE prior to any other command).\n"
-			+ "Enter QUIT to quit.";
+			"Hi! Please insert a coin to begin or you may even enter a command (commands are case-sensitive)\n"
+			+ "CTRL+C to quit.";
 
 }
