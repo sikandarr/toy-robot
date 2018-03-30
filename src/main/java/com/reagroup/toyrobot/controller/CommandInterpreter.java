@@ -93,8 +93,11 @@ public class CommandInterpreter
 		{
 			String[] args = commandString.split("[ ]")[1].split(",");
 
-			if (args.length > 3)
+			if (args.length != 3)
+			{
+				log.warning("PLACE command has insufficient arguments");
 				return new UnknownCommand();
+			}
 
 			x = Integer.parseInt(args[0]);
 			y = Integer.parseInt(args[1]);
@@ -102,7 +105,7 @@ public class CommandInterpreter
 		}
 		catch (ArrayIndexOutOfBoundsException | IllegalArgumentException ex)
 		{
-			log.warning("Failed to interpret the command: " + commandString);
+			log.warning("PLACE command is incorrect");
 			return new UnknownCommand();
 		}
 
