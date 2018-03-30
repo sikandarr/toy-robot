@@ -10,8 +10,8 @@ import lombok.AllArgsConstructor;
 
 /**
  * The command factory that is responsible to translate user inputs
- * and return new commands that may then be executed by a simulation
- * engine.
+ * and return new commands that may then be executed by the client
+ * class.
  *
  */
 
