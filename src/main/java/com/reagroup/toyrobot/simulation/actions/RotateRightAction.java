@@ -1,5 +1,6 @@
 package com.reagroup.toyrobot.simulation.actions;
 
+import com.reagroup.toyrobot.model.Direction;
 import com.reagroup.toyrobot.model.Position;
 import com.reagroup.toyrobot.model.SurfaceObject;
 
@@ -10,15 +11,20 @@ import com.reagroup.toyrobot.model.SurfaceObject;
 public class RotateRightAction extends Action
 {
 	@Override
-	public void performAction(SurfaceObject object)
+	public void performAction(SurfaceObject surfaceObject)
 	{
-		Position position = object.getPosition();
+		/** checks if the surface object is placed **/
 		setChanged();
-		notifyObservers(position);
+		notifyObservers();
+		
 		if (proceed)
 		{
-			position.setFacing(position.getFacing().turnRight());
-			object.setPosition(position);
+			int x = surfaceObject.getPosition().getX();
+			int y = surfaceObject.getPosition().getY();
+			Direction facing = surfaceObject.getPosition().getFacing().turnRight();
+			
+			Position position = new Position(x, y, facing);
+			surfaceObject.setPosition(position);
 		}
 	}
 }
