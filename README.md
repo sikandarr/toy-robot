@@ -1,4 +1,4 @@
-# Toy Robot
+# Toy Robot Simulator
 The solution in this repository is an implementation of the **Toy Robot** programming exercise from the **REA Group.** For a more detailed description of the problem see PROBLEM.md
 
 ## Getting Started
@@ -13,7 +13,16 @@ The solution in this repository is an implementation of the **Toy Robot** progra
 
 1. Download the latest release.
 
-2. To build the application issue the following commands from the root of the project's folder
+2. To run the tests and build the application issue the following commands from the root of the project's folder:
 
 > ```gradlew build```
 
+This will create a runnable JAR file in the ``PROJECT_ROOT/build/lib``
+
+3. You can then run the JAR using the following command:
+
+>  ```java -jar :path-to-jarfile```
+
+The above will run the application in interactive mode where you can issue the program's commands on the console; you can provide the name of the file conatining a list of commands as input to the program with the following command:
+
+> ``` java -jar :path-to-jarfile :path-to-inputfile```
