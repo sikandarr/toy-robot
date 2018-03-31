@@ -17,9 +17,12 @@ import lombok.Getter;
 @EqualsAndHashCode
 public class Position
 {
-	@Getter private final int x;
-	@Getter private final int y;
-	@Getter private final Direction facing;
+	@Getter
+	private final int x;
+	@Getter
+	private final int y;
+	@Getter
+	private final Direction facing;
 
 	@Override
 	public String toString()

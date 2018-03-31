@@ -6,7 +6,7 @@ import com.reagroup.toyrobot.model.SurfaceObject;
 
 
 /**
- * Provides the logic to increment an SurfaceObject's
+ * Provides the logic to increment a SurfaceObject's
  * x or y position in the direction it is facing.
  *
  */

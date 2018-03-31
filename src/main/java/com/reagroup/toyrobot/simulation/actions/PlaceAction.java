@@ -9,6 +9,9 @@ import lombok.EqualsAndHashCode;
 /**
  * A Place action places a surface object on
  * the surface at a given position.
+ * 
+ * The position at which the object is to be placed on
+ * the surface must be injected by the client class.
  *
  */
 

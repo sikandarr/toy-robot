@@ -43,7 +43,7 @@ public class ReportCommand implements ResponseCommand
 			return response;
 		else
 		{
-			log.log(Level.SEVERE, "ReportCommand: execute() must be called before getResponse()");
+			log.log(Level.SEVERE, "execute() must be called before getResponse()");
 			return "";
 		}
 	}

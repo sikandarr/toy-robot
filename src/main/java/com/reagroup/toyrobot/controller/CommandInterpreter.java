@@ -67,7 +67,7 @@ public class CommandInterpreter
 			return cmd;
 		}
 
-		log.warning("Failed to interpret the command: " + commandString);
+		log.warning("Failed to interpret command: " + commandString);
 		return new UnknownCommand();
 	}
 
