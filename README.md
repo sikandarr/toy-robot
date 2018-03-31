@@ -23,6 +23,10 @@ This will create a runnable JAR file in the ``PROJECT_ROOT/build/lib``
 
 >  ```java -jar :path-to-jarfile```
 
-The above will run the application in interactive mode where you can issue the program's commands on the console; you can provide the name of the file conatining a list of commands as input to the program with the following command:
+The above will run the application in interactive mode where you can issue the program's commands on the console; you can provide the name of the file containing a list of commands as input to the program with the following command:
 
 > ``` java -jar :path-to-jarfile :path-to-inputfile```
+
+## Design & Architecture
+
+The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow loose coupling of these components for better management and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns.
