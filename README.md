@@ -29,7 +29,7 @@ The above will run the application in interactive mode where you can issue the p
 
 ## External Libraries
 
-The project liberally uses the fantastic Project Lombok  java library which helps in significantly reducing the amount of boiler-plate code required by adding methods for getters, setters, equals and hash, constructors, and even builders etc. and hence allowing for improved readability and better management of the code and generally clean code. 
+The project liberally uses the fantastic [Project Lombok](https://projectlombok.org)  java library which helps in significantly reducing the amount of boiler-plate code required by adding methods for getters, setters, equals and hash, constructors, and even builders etc. and hence allowing for improved readability and better management of the code and generally clean code. 
 
 ## Design & Architecture
 
