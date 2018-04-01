@@ -4,7 +4,7 @@ The solution in this repository is an implementation of the **Toy Robot** progra
 ## Getting Started
 
 ### Pre-requisites
-- JDK 1.8 is required to run the program.
+- JDK 8 is required to run the program.
 - You must ensure that JAVA_HOME path is setup correctly to locate your JDK installation.
 
 > The program uses gradle build tool and comes pre-installed with the gradle-wrapper and hence does not require an installation of Gradle.
@@ -29,8 +29,8 @@ The above will run the application in interactive mode where you can issue the p
 
 ## External Libraries
 
-The project liberally uses the fantastic Project Lombok  java library which helps in significantly reducing the amount of boiler-plate code required by adding methods for getters, setters, equals and hash, constructors, and even builders etc. and hence allowing for improved readability and better management of the code and generally clean code. 
+The project liberally uses the fantastic [Project Lombok](https://projectlombok.org)  java library which helps in significantly reducing the amount of boiler-plate code required by adding methods for getters, setters, equals and hash, constructors, and even builders etc. and hence allowing for improved readability and better management of the code and generally clean code. 
 
 ## Design & Architecture
 
-The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow loose coupling of these components for better management and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns.
+The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow division between the presentation layer and the domain model for better management of codebase and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns.
