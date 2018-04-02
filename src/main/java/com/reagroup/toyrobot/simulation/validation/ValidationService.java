@@ -13,7 +13,7 @@ import java.util.Observer;
  * greater extensibility of both the action and validation services;
  * for example, we can introduce new actions without repeating the
  * code required to validate those actions or impose new restrictions
- * with much change in the existing actions classes.
+ * without much change in the existing actions classes.
  *
  */
 
