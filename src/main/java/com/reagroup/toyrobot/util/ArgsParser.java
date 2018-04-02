@@ -9,6 +9,14 @@ import java.util.logging.Handler;
 import java.util.logging.Logger;
 import lombok.Getter;
 
+/**
+ * 
+ * This is a utility class that parses the command line
+ * options and initializes the scanner and 
+ * sets the logger to output to file if requested.
+ *
+ */
+
 @Getter
 public final class ArgsParser
 {
@@ -22,29 +30,30 @@ public final class ArgsParser
 		this.scanner = new Scanner(System.in);
 		this.readFromFile = false;
 
-		if (args.length > 0 && args.length % 2 == 0 && args.length <= 4)
-		{
-			for (int i = 0; i < args.length; i++)
+		if (args.length > 0)
+			if (args.length % 2 == 0 && args.length <= 4)
 			{
-				switch (args[i])
+				for (int i = 0; i < args.length; i++)
 				{
-					case "-f":
-						scanner = setScanner(args[++i]);
-						readFromFile = true;
-						break;
+					switch (args[i])
+					{
+						case "-f":
+							this.scanner = setScanner(args[++i]);
+							this.readFromFile = true;
+							break;
 
-					case "-l":
-						setupFileLogging(args[++i]);
-						break;
+						case "-l":
+							setupFileLogging(args[++i]);
+							break;
+					}
 				}
 			}
-		}
-		else
-		{
-			log.warning("Parsing arguments failed: insufficient arguments");
-			System.out.println("Incorrect usage. Check README.");
-			System.exit(0);
-		}
+			else
+			{
+				log.warning("Parsing arguments failed: insufficient arguments");
+				System.out.println("Incorrect usage. Check README.");
+				System.exit(0);
+			}
 	}
 
 	private Scanner setScanner(String fileName)
