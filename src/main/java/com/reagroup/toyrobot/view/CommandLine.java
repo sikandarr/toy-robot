@@ -45,7 +45,7 @@ public class CommandLine implements View
 	@Builder.Default
 	@Setter
 	private String welcomeMessage = "" +
-			"Hi! Please insert a coin to begin or you may even enter a command (commands are case-sensitive)\n"
-			+ "CTRL+C to quit.";
+			"Hi! Please insert a coin to begin or better yet enter a command (commands are case-sensitive)\n"
+			+ "QUIT to quit.";
 
 }
