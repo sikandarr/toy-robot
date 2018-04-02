@@ -20,7 +20,7 @@ public class CommandInterpreter
 {
 	private final SurfaceObject surfaceObject;
 	private final Surface surface;
-	private static Logger log = Logger.getLogger(CommandInterpreter.class.getName());
+	private final static Logger log = Logger.getLogger(CommandInterpreter.class.getName());
 
 	/**
 	 * Returns a Command object that can then be executed
@@ -65,6 +65,13 @@ public class CommandInterpreter
 			action.addObserver(new CheckObjectIsPlaced(surfaceObject));
 			Command cmd = new ActionCommand(surfaceObject, action);
 			return cmd;
+		}
+		
+		if (commandString.equals("QUIT"))
+		{
+			log.info("Exitting the simulator");
+			System.exit(0);
+			return null;
 		}
 
 		log.warning("Failed to interpret command: " + commandString);
