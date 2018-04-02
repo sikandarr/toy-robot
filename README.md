@@ -19,13 +19,21 @@ The solution in this repository is an implementation of the **Toy Robot** progra
 
 This will create a runnable JAR file in the ``PROJECT_ROOT/build/lib``
 
-3. You can then run the JAR using the following command:
+3. You can then run the JAR using the following command to run the application in interactive mode:
 
 >  ```java -jar :path-to-jarfile```
 
-The above will run the application in interactive mode where you can issue the program's commands on the console; you can provide the name of the file containing a list of commands as input to the program with the following command:
+4. More Usage Options:
 
-> ``` java -jar :path-to-jarfile :path-to-inputfile```
+The application can also be run with the following options:
+
+```-f :path-to-inputfile``` Instructs the program to read the commands from user provided inputfile.
+
+```-l :path-to-folder``` Creates a file with the log output in the specified folder (the folder must exist).
+
+Example:
+
+> ```java -jar :path-to-jarfile -f C:\input.txt -l C:\Log\```
 
 ## External Libraries
 
@@ -33,4 +41,4 @@ The project liberally uses the fantastic [Project Lombok](https://projectlombok.
 
 ## Design & Architecture
 
-The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow division between the presentation layer and the domain model for better management of codebase and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns. See also, design.md
+The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow division between the presentation layer and the domain model for better management of codebase and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns (see DESIGN.md for further notes).
