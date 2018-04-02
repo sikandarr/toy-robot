@@ -22,7 +22,7 @@ Position is the precise location of surface object which includes the x, y coord
 ### A Note on Simulation Package ###
 The classes and interface of the primary model form the ‘core-library’ of our application and have been packaged as model. The simulation package provides concrete implementations and uses the services of the core models. It also contains interfaces and classes that govern the physical laws and movements in the system using the Action and ValidationService interfaces.
 
-* ### Flow of the program: ###
+### Flow of the program: ###
 * An input is entered by the user.
 * The view receives the input and sends it to the controller.
 * The controller sends the input to the command interpreter.
