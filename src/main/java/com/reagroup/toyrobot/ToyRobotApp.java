@@ -54,7 +54,8 @@ public final class ToyRobotApp
 		cli.setController(controller);
 		
 		if (argsParser.isReadFromFile())
-			cli.setWelcomeMessage("Hi! I will read the input command from the file and print the output here");
+			cli.setWelcomeMessage("Welcome to Toy Robot Simulator\n"
+					+ "Hi! I will read the input command from the file and print the output here");
 	}
 
 	public void run()

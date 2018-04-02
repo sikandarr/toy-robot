@@ -44,8 +44,8 @@ public class CommandLine implements View
 
 	@Builder.Default
 	@Setter
-	private String welcomeMessage = "" +
+	private String welcomeMessage = "Welcome to Toy Robot Simulator\n" +
 			"Hi! Please insert a coin to begin or better yet enter a command (commands are case-sensitive)\n"
-			+ "QUIT to quit.";
+			+ "Enter QUIT to quit.";
 
 }
