@@ -19,7 +19,7 @@ Direction is an enumeration of cardinal directions of North, South, East, and We
 * #### Position ###
 Position is the precise location of surface object which includes the x, y coordinates and one of the cardinal directions.
 
-* ### A Note on Simulation Package ###
+### A Note on Simulation Package ###
 The classes and interface of the primary model form the ‘core-library’ of our application and have been packaged as model. The simulation package provides concrete implementations and uses the services of the core models. It also contains interfaces and classes that govern the physical laws and movements in the system using the Action and ValidationService interfaces.
 
 * ### Flow of the program: ###
