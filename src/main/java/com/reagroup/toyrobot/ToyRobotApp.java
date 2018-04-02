@@ -1,6 +1,5 @@
 package com.reagroup.toyrobot;
 
-import java.io.IOException;
 import com.reagroup.toyrobot.controller.Controller;
 import com.reagroup.toyrobot.model.*;
 import com.reagroup.toyrobot.simulation.*;
@@ -21,7 +20,7 @@ public final class ToyRobotApp
 	private CommandLine cli;
 	private Controller controller;
 
-	public static void main(String[] args) throws SecurityException, IOException
+	public static void main(String[] args)
 	{
 		ToyRobotApp app = new ToyRobotApp(args);
 		app.run();
