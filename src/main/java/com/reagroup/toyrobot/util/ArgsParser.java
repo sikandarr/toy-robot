@@ -42,7 +42,7 @@ public final class ArgsParser
 		else
 		{
 			log.warning("Parsing arguments failed: insufficient arguments");
-			System.out.println("Incorrect usage");
+			System.out.println("Incorrect usage. Check README.");
 			System.exit(0);
 		}
 	}
