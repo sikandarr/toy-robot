@@ -33,4 +33,4 @@ The project liberally uses the fantastic [Project Lombok](https://projectlombok.
 
 ## Design & Architecture
 
-The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow division between the presentation layer and the domain model for better management of codebase and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns.
+The application is designed using the Model-View-Controller architecture pattern where the components of the system are layered using the semantics of MVC to allow division between the presentation layer and the domain model for better management of codebase and furture extensions. The program has also made use of builder, factory, observer, and strategy design patterns. See also, design.md
