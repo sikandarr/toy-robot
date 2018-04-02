@@ -25,19 +25,19 @@ public final class ToyRobotApp
 	private SurfaceObject toyRobot;
 	private CommandLine cli;
 	private Controller controller;
-	private static Scanner scan = new Scanner(System.in);
+	private Scanner scan = new Scanner(System.in);
 	private final static Logger log = Logger
 			.getLogger(ToyRobot.class.getName());
 
 	public static void main(String[] args) throws SecurityException, IOException
 	{
-		parseArgs(args);
-		ToyRobotApp app = new ToyRobotApp();
+		ToyRobotApp app = new ToyRobotApp(args);
 		app.run();
 	}
 
-	private ToyRobotApp()
+	private ToyRobotApp(String ...args)
 	{
+		boolean readFromFile = parseArgs(args);
 		Surface table = new SquareTable(5);
 
 		toyRobot = new ToyRobot.RobotBuilder()
@@ -60,13 +60,17 @@ public final class ToyRobotApp
 				.build();
 
 		cli.setController(controller);
-
+		
+		if (readFromFile)
+			cli.setWelcomeMessage("Hi! I will read the input command from the file and print the output here");
 	}
 
-	private static void parseArgs(String... args)
+	private boolean parseArgs(String... args)
 	{
+		boolean readFromFile = false;
+		
 		if (args.length <= 0)
-			return;
+			return readFromFile;
 
 		if ((!(args.length % 2 == 0)) || args.length > 4)
 		{
@@ -81,6 +85,7 @@ public final class ToyRobotApp
 			{
 				case "-f":
 					scan = setFileScanner(args[++i]);
+					readFromFile = true;
 					break;
 
 				case "-l":
@@ -88,9 +93,11 @@ public final class ToyRobotApp
 					break;
 			}
 		}
+		
+		return readFromFile;
 	}
 
-	private static Scanner setFileScanner(String fileName)
+	private Scanner setFileScanner(String fileName)
 	{
 		try
 		{
@@ -104,7 +111,7 @@ public final class ToyRobotApp
 		}
 	}
 
-	private static void setupFileLogging(String path)
+	private void setupFileLogging(String path)
 	{
 		File file = new File(path);
 
