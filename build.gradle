@@ -7,7 +7,7 @@ repositories {
     mavenCentral()
 }
 group = 'com.rea-group'
-version = '0.1-SNAPSHOT'
+version = '0.1-FINAL'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -25,5 +25,5 @@ jar {
     )
   }
     baseName = 'rea-toy-robot'
-    version =  '0.1-SNAPSHOT'
+    version =  '0.1-FINAL'
 }
