@@ -2,8 +2,11 @@ package com.reagroup.toyrobot;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
-
+import java.util.logging.FileHandler;
+import java.util.logging.Handler;
+import java.util.logging.Logger;
 import com.reagroup.toyrobot.controller.Controller;
 import com.reagroup.toyrobot.model.*;
 import com.reagroup.toyrobot.simulation.*;
@@ -22,17 +25,21 @@ public final class ToyRobotApp
 	private SurfaceObject toyRobot;
 	private CommandLine cli;
 	private Controller controller;
+	private static Scanner scan = new Scanner(System.in);
+	private final static Logger log = Logger
+			.getLogger(ToyRobot.class.getName());
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws SecurityException, IOException
 	{
-		ToyRobotApp app = new ToyRobotApp(args);
+		parseArgs(args);
+		ToyRobotApp app = new ToyRobotApp();
 		app.run();
 	}
 
-	private ToyRobotApp(String ...args)
+	private ToyRobotApp()
 	{
 		Surface table = new SquareTable(5);
-		
+
 		toyRobot = new ToyRobot.RobotBuilder()
 				.action(new PlaceAction(null))
 				.action(new MoveFowardAction())
@@ -42,7 +49,7 @@ public final class ToyRobotApp
 
 		cli = CommandLine.builder()
 				.out(System.out)
-				.scan(parseArgs(args))
+				.scan(scan)
 				.build();
 
 		controller = Controller
@@ -51,30 +58,82 @@ public final class ToyRobotApp
 				.surface(table)
 				.surfaceObject(toyRobot)
 				.build();
-		
+
 		cli.setController(controller);
-		if(args.length > 0)
-			cli.setWelcomeMessage("Hello, I will read the commands from file and print the required output here.");
 
 	}
-	
-	private Scanner parseArgs(String ...args)
-	{	
-		if (args.length > 0)
+
+	private static void parseArgs(String... args)
+	{
+		if (args.length <= 0)
+			return;
+
+		if ((!(args.length % 2 == 0)) || args.length > 4)
 		{
-			try
+			log.warning("Incorrect usage. Insufficient arguments supplied");
+			System.out.println("Incorrect usage. Refer to documentation.");
+			System.exit(0);
+		}
+		
+		for (int i = 0; i < args.length; i++)
+		{
+			switch (args[i])
 			{
-				return new Scanner(new File(args[0]));
-			}
-			catch(FileNotFoundException ex)
-			{
-				System.out.println("File not found: " + args[0]);
-				System.exit(0);
-				return null;
+				case "-f":
+					scan = setFileScanner(args[++i]);
+					break;
+
+				case "-l":
+					setupFileLogging(args[++i]);
+					break;
 			}
 		}
-		else
-			return new Scanner(System.in);
+	}
+
+	private static Scanner setFileScanner(String fileName)
+	{
+		try
+		{
+			return new Scanner(new File(fileName));
+		}
+		catch (FileNotFoundException ex)
+		{
+			System.out.println("File not found: " + fileName);
+			System.exit(0);
+			return null;
+		}
+	}
+
+	private static void setupFileLogging(String path)
+	{
+		File file = new File(path);
+
+		if (!file.isDirectory())
+		{
+			log.warning(path
+					+ " is not a folder. Logging will continue on console");
+			return;
+		}
+
+		Logger rootLogger = Logger.getLogger("");
+		FileHandler fileHandler = null;
+
+		try
+		{
+			fileHandler = new FileHandler(path + (path.endsWith("\\") == true
+					? "toy-robot.log" : "\\toy-robot.log"));
+			Handler[] handlers = rootLogger.getHandlers();
+			for (Handler handler : handlers)
+			{
+				rootLogger.removeHandler(handler);
+			}
+			rootLogger.addHandler(fileHandler);
+		}
+		catch (SecurityException | IOException e)
+		{
+			rootLogger.warning(
+					e.getMessage() + "\n Logging will continue on console");
+		}
 	}
 
 	public void run()
