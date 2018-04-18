@@ -22,11 +22,19 @@ public class TestCollisionDetectableSurface
 	}
 
 	@Test
-	public void test()
+	public void testCollisionIsDetectedWhenPositionsAreSame()
 	{
 		Position position1 = new Position(0,0,Direction.NORTH);
 		Position position2 = new Position(0,0,Direction.NORTH);
 		assertEquals(true, surface.detectCollision(position1, position2));
+	}
+	
+	@Test
+	public void testCollisionIsNotDetectedWhenPositionsAreNotSame()
+	{
+		Position position1 = new Position(0,0,Direction.NORTH);
+		Position position2 = new Position(0,1,Direction.NORTH);
+		assertEquals(false, surface.detectCollision(position1, position2));
 	}
 
 }
